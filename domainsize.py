@@ -2,7 +2,7 @@ import numpy as np
 import math
 import fileinput
 
-nconf = 7
+nconf = 1
 filename = "3_ht.lammpstrj"
 zcount =np.zeros((1000))
 def MSD(nconf):
