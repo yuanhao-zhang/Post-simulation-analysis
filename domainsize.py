@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# Script:  denprof.py
+# Purpose: calculate velocity of penetrants (or polymers) as function of distance from interface using the shortest diffusion of the log-scaled coordinate.
+# Syntax:  denprof.py  
+# Author:  Y. Seo from Lisa's msd code & Youngmi's circling.py
+# derived from fortran code
 # -------------------------------------------------------
 
 from re import I, X
@@ -82,7 +88,7 @@ xcom0=ycom0=zcom0=xcom=ycom=zcom=Mtotal=0
 st=np.zeros((nconf,1))
 
 for kconf in range(0,nconf):
-    process_bar(kconf+1,nconf)
+    #process_bar(kconf+1,nconf)
     IN.readline()
     line = IN.readline()
     st[kconf] = int(line.split()[0]) 
@@ -184,7 +190,7 @@ for kconf in range(0,nconf):
     zbreal= max(zz)-min(zz)
     
     binsize = (vol*zbreal)/mg
-    print(zbreal,vol*zbreal)
+    #print(zbreal,vol*zbreal)
 
 
     if kconf == 2:
@@ -244,9 +250,10 @@ if half:
         z = (i+0.5)/(2*nbin)
 #        OUT.write("%1.4f %8.9f %8.9f \n" % 
 #                 (z, ddnum1[i], ddnum2[i]))
-    slop = np.gradient(ddnum2,z)    
-    print(slop[int(nbin/4)])
-    print(slop)
+    slop = np.gradient(ddnum2,z)
+    OUT.write("%8.9f \n" %(slop[int(nbin/4)]) )   
+#    print(slop[int(nbin/4)])
+#    print(slop)
 #    OUT.write('\n')
 #    OUT.write("var(EO), var(PS), var(Li), var_D(Li), var_D(Tf1), var_D(Tf2)\n") 
 #    for i in range(nbin):
